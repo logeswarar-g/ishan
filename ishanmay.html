@@ -4,7 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISHAN PRESCHOOL AND ISHAN ACADEMY - Our School, Our Future</title>
+    <meta name="description" content="Ishan Pre School in Chennai offers a nurturing environment for early childhood education.">
+    <meta name="keywords" content="Ishan Preschool, Chennai, nursery school, kids education, Kovur">
+    <meta name="robots" content="index, follow">
+
     <style>
+
+.hall-of-fame {
+            padding: 80px 0;
+            background-color: var(--light-accent);
+        }
+
+        .hall-of-fame-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .photo-gallery {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .gallery-main-image {
+            max-width: 700px;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .gallery-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(79, 70, 229, 0.7);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            z-index: 10;
+        }
+
+        .gallery-nav-btn:hover {
+            background-color: rgba(79, 70, 229, 0.9);
+        }
+
+        .gallery-nav-btn.prev {
+            left: -50px;
+        }
+
+        .gallery-nav-btn.next {
+            right: -50px;
+        }
+
+        .photo-thumbnails {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .photo-thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .photo-thumbnail:hover,
+        .photo-thumbnail.active {
+            opacity: 1;
+            box-shadow: 0 0 0 3px var(--primary);
+        }
+
+        .upload-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            max-width: 500px;
+            margin: 30px auto;
+        }
+
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .upload-form input[type="file"] {
+            margin-bottom: 15px;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -970,6 +1068,126 @@
         </div>
     </section>
 
+    <section class="hall-of-fame" id="hall-of-fame">
+        <div class="container">
+            <h2 class="section-title">Hall of Fame</h2>
+            <div class="hall-of-fame-container">
+                <div class="photo-gallery">
+                    <button class="gallery-nav-btn prev" onclick="changePhoto(-1)">&#10094;</button>
+                    <!-- Default image is set here directly in the HTML -->
+                    <img id="main-gallery-image" class="gallery-main-image" src="temp_1.jpg" alt="School Event 1">
+                    <button class="gallery-nav-btn next" onclick="changePhoto(1)">&#10095;</button>
+                </div>
+                <div class="photo-thumbnails" id="photo-thumbnails">
+                    <!-- Thumbnails will be dynamically populated -->
+                </div>
+            </div>
+        </div>
+    
+        <style>
+            .hall-of-fame-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            
+            .photo-gallery {
+                position: relative;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            
+            .gallery-main-image {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            
+            .gallery-nav-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: rgba(0, 102, 255, 0.7);  /* Blue background color */
+                color: white;  /* White text color for contrast */
+                border: none;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background-color 0.3s, color 0.3s;
+            }
+            
+            .gallery-nav-btn:hover {
+                background-color: rgba(0, 102, 255, 0.9);  /* Darker blue on hover */
+                color: white;
+            }
+            
+            .prev {
+                left: 10px;
+            }
+            
+            .next {
+                right: 10px;
+            }
+            
+            .photo-thumbnails {
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+                max-width: 100%;
+                overflow-x: auto;
+                padding: 10px 0;
+            }
+            
+            .photo-thumbnail {
+                width: 80px;
+                height: 60px;
+                cursor: pointer;
+                opacity: 0.6;
+                transition: opacity 0.3s, border-color 0.3s;
+                border: 2px solid transparent;
+                object-fit: cover;
+                border-radius: 4px;
+            }
+            
+            .photo-thumbnail:hover {
+                opacity: 0.8;
+            }
+            
+            .photo-thumbnail.active {
+                opacity: 1;
+                border-color: #007bff;
+            }
+            
+            .thumbnail-nav {
+                cursor: pointer;
+                padding: 5px 10px;
+                background: rgba(0, 0, 0, 0.1);
+                border-radius: 4px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+            }
+            
+            .thumbnail-nav:hover {
+                background: rgba(0, 0, 0, 0.2);
+            }
+        </style>
+    </section>
+
+
     <!-- Features Section -->
     <section class="features" id="about">
         <div class="container">
@@ -1482,6 +1700,138 @@
             });
         }
     </script>
+    <script>
+        // Gallery Management Script
+        let currentPhotoIndex = 0;
+        const galleryPhotos = [
+        { src: "temp_1.jpg", description: "School Event 1" },
+{ src: "temp_2.jpg", description: "School Event 2" },
+{ src: "temp_3.jpg", description: "School Event 3" },
+{ src: "temp_4.jpg", description: "School Event 4" },
+{ src: "temp_5.jpg", description: "School Event 5" },
+{ src: "temp_6.jpg", description: "School Event 6" },
+{ src: "temp_7.jpg", description: "School Event 7" },
+{ src: "temp_8.jpg", description: "School Event 8" },
+{ src: "temp_9.jpg", description: "School Event 9" },
+{ src: "temp_10.jpg", description: "School Event 10" },
+{ src: "temp_11.jpg", description: "School Event 11" },
+{ src: "temp_12.jpg", description: "School Event 12" },
+{ src: "temp_13.jpg", description: "School Event 13" },
+{ src: "temp_14.jpg", description: "School Event 14" },
+{ src: "temp_15.jpg", description: "School Event 15" },
+{ src: "temp_16.jpg", description: "School Event 16" },
+{ src: "temp_17.jpg", description: "School Event 17" },
+{ src: "temp_18.jpg", description: "School Event 18" },
+{ src: "temp_19.jpg", description: "School Event 19" },
+{ src: "temp_20.jpg", description: "School Event 20" },
+{ src: "temp_21.jpg", description: "School Event 21" },
+{ src: "temp_22.jpg", description: "School Event 22" },
+{ src: "temp_23.jpg", description: "School Event 23" },
+{ src: "temp_24.jpg", description: "School Event 24" },
+{ src: "temp_25.jpg", description: "School Event 25" },
+{ src: "temp_26.jpg", description: "School Event 26" },
+{ src: "temp_27.jpg", description: "School Event 27" },
+{ src: "temp_28.jpg", description: "School Event 28" },
+{ src: "temp_29.jpg", description: "School Event 29" },
+{ src: "temp_30.jpg", description: "School Event 30" },
+{ src: "temp_31.jpg", description: "School Event 31" },
+{ src: "temp_32.jpg", description: "School Event 32" },
+{ src: "temp_33.jpg", description: "School Event 33" },
+{ src: "temp_34.jpg", description: "School Event 34" },
+{ src: "temp_35.jpg", description: "School Event 35" },
+{ src: "temp_36.jpg", description: "School Event 36" },
+{ src: "temp_37.jpg", description: "School Event 37" },
+{ src: "temp_38.jpg", description: "School Event 38" },
+{ src: "temp_39.jpg", description: "School Event 39" },
+{ src: "temp_40.jpg", description: "School Event 40" },
+{ src: "temp_41.jpg", description: "School Event 41" },
+{ src: "temp_42.jpg", description: "School Event 42" },
+{ src: "temp_43.jpg", description: "School Event 43" },
+{ src: "temp_44.jpg", description: "School Event 44" },
+{ src: "temp_45.jpg", description: "School Event 45" },
+{ src: "temp_46.jpg", description: "School Event 46" },
+{ src: "temp_47.jpg", description: "School Event 47" },
+{ src: "temp_48.jpg", description: "School Event 48" },
+{ src: "temp_49.jpg", description: "School Event 49" },
+{ src: "temp_50.jpg", description: "School Event 50" },
+{ src: "temp_51.jpg", description: "School Event 51" },
+{ src: "temp_52.jpg", description: "School Event 52" },
+{ src: "temp_53.jpg", description: "School Event 53" },
+{ src: "temp_54.jpg", description: "School Event 54" },
+{ src: "temp_55.jpg", description: "School Event 55" },
+{ src: "temp_56.jpg", description: "School Event 56" },
+{ src: "temp_57.jpg", description: "School Event 57" },
+{ src: "temp_58.jpg", description: "School Event 58" }
+
+        
+            
     
+];
+
+        
+
+        function updateGallery() {
+            const mainImage = document.getElementById('main-gallery-image');
+            const thumbnailsContainer = document.getElementById('photo-thumbnails');
+
+            // Update main image
+            mainImage.src = galleryPhotos[currentPhotoIndex].src;
+            mainImage.alt = galleryPhotos[currentPhotoIndex].description;
+
+            // Update thumbnails
+            thumbnailsContainer.innerHTML = '';
+            galleryPhotos.forEach((photo, index) => {
+                const thumbnail = document.createElement('img');
+                thumbnail.src = photo.src;
+                thumbnail.alt = photo.description;
+                thumbnail.classList.add('photo-thumbnail');
+                if (index === currentPhotoIndex) {
+                    thumbnail.classList.add('active');
+                }
+                thumbnail.onclick = () => {
+                    currentPhotoIndex = index;
+                    updateGallery();
+                };
+                thumbnailsContainer.appendChild(thumbnail);
+            });
+        }
+
+        function changePhoto(direction) {
+            currentPhotoIndex = (currentPhotoIndex + direction + galleryPhotos.length) % galleryPhotos.length;
+            updateGallery();
+        }
+
+        // Photo Upload Handling
+        document.getElementById('photo-upload-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const fileInput = document.getElementById('photo-upload');
+            const descriptionInput = document.getElementById('photo-description');
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                    const newPhoto = {
+                        src: event.target.result,
+                        description: descriptionInput.value || `Photo ${galleryPhotos.length + 1}`
+                    };
+
+                    galleryPhotos.push(newPhoto);
+                    currentPhotoIndex = galleryPhotos.length - 1;
+                    updateGallery();
+
+                    // Reset form
+                    fileInput.value = '';
+                    descriptionInput.value = '';
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Initialize gallery on page load
+        updateGallery();
+    </script>
     </body>
     </html>
